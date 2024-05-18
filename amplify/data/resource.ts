@@ -12,7 +12,11 @@ const schema = a.schema({
       childID: a.string(),
       firstName: a.string(),
       lastName: a.string(),
-      inTrip: a.boolean()
+      inTrip: a.boolean(),
+      childLocation:a.customType({
+        latitude: a.float(),
+        longitude: a.float()
+      })
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });

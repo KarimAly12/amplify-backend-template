@@ -13,7 +13,7 @@ const schema = a.schema({
       firstName: a.string(),
       lastName: a.string(),
       inTrip: a.boolean(),
-      childLocation:a.customType({
+      location:a.customType({
         latitude: a.float(),
         longitude: a.float()
       })

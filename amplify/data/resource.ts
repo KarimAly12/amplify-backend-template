@@ -8,43 +8,28 @@ specifies that any user authenticated via an API key can "create", "read",
 =========================================================================*/
 const schema = a.schema({
 
-  ParentChild: a.model({
-
-    childEmail: a.id().required(),
-    parentEmail: a.id().required(),
-
-    child: a.belongsTo('Child', 'childEmail'),
-    parent: a.belongsTo('Parent', 'parentEmail')
-
-  }),
 
   Child: a
     .model({
-      //email: a.id().required(),
+      email: a.id().required(),
       firstName: a.string(),
       lastName: a.string(),
       inTrip: a.boolean(),
       location:a.customType({
         latitude: a.float(),
         longitude: a.float()
-      }),
-
-      parents: a.hasMany('ParentChild', 'childEmail')
-
+      })
     })
+    .identifier(['email'])
     .authorization((allow) => [allow.publicApiKey()]),
 
     Parent : a
       .model({
-        //email:a.id().required(),
+        email:a.id().required(),
         firstName: a.string(),
-        lastName: a.string(),
-
-        children: a.hasMany('ParentChild', 'parentEmail')
-
-
-
+        lastName: a.string()
       })
+      .identifier(['email'])
       .authorization((allow) => [allow.publicApiKey()]),
 });
 

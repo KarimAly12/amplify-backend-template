@@ -32,7 +32,6 @@ const schema = a.schema({
       parents: a.hasMany('ParentChild', 'childEmail')
 
     })
-    .identifier(['email'])
     .authorization((allow) => [allow.publicApiKey()]),
 
     Parent : a
@@ -46,7 +45,6 @@ const schema = a.schema({
 
 
       })
-      .identifier(['email'])
       .authorization((allow) => [allow.publicApiKey()]),
 });
 

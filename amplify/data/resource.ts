@@ -22,6 +22,7 @@ const schema = a.schema({
 
   Child: a
     .model({
+      childEmail: a.id().required(),
       firstName: a.string(),
       lastName: a.string(),
       inTrip: a.boolean(),
@@ -31,16 +32,19 @@ const schema = a.schema({
       }),
 
       parents: a.hasMany('ParentChild', 'childEmail'),
-    }),
+    })
+    .identifier(['childEmail']),
 
     Parent : a
       .model({
+        parentEmail: a.id().required(),
         firstName: a.string(),
         lastName: a.string(),
 
         children: a.hasMany('ParentChild', 'parentEmail'),
 
-      }),
+      })
+      .identifier(['parentEmail']),
 }).authorization((allow) => [allow.publicApiKey()]);
 
 export type Schema = ClientSchema<typeof schema>;

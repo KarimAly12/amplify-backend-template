@@ -31,8 +31,7 @@ const schema = a.schema({
       }),
 
       parents: a.hasMany('ParentChild', 'childEmail'),
-    })
-    .authorization((allow) => [allow.publicApiKey()]),
+    }),
 
     Parent : a
       .model({
@@ -41,9 +40,8 @@ const schema = a.schema({
 
         children: a.hasMany('ParentChild', 'parentEmail'),
 
-      })
-      .authorization((allow) => [allow.publicApiKey()]),
-});
+      }),
+}).authorization((allow) => [allow.publicApiKey()]);
 
 export type Schema = ClientSchema<typeof schema>;
 

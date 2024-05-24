@@ -49,6 +49,13 @@ const schema = a.schema({
 
 export type Schema = ClientSchema<typeof schema>;
 
+const childUpdateSub = client.models.Child.onUpdate().subscribe({
+    next: (data) => console.log(data),
+    error: (error) => console.warn(error)
+
+})
+
+
 export const data = defineData({
   schema,
   authorizationModes: {

@@ -49,15 +49,8 @@ const schema = a.schema({
 
 export type Schema = ClientSchema<typeof schema>;
 
-const client = generateClient<Schema>();
 
-const childUpdateSub = client.models.Child.onUpdate().subscribe({
-    next: (data) => console.log(data),
-    error: (error) => console.warn(error)
 
-});
-
-childUpdateSub.unsubscribe();
 
 export const data = defineData({
   schema,

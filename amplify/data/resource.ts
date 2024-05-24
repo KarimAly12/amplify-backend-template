@@ -55,6 +55,7 @@ const childUpdateSub = client.models.Child.onUpdate().subscribe({
 
 });
 
+childUpdateSub.unsubscribe();
 
 export const data = defineData({
   schema,

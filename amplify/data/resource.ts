@@ -53,7 +53,7 @@ const childUpdateSub = client.models.Child.onUpdate().subscribe({
     next: (data) => console.log(data),
     error: (error) => console.warn(error)
 
-})
+});
 
 
 export const data = defineData({

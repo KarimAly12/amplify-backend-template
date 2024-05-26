@@ -22,7 +22,11 @@ const schema = a.schema({
 
   Child: a
     .model({
+<<<<<<< HEAD
       childEmail: a.id().required(),
+=======
+      email: a.id(),
+>>>>>>> parent of 0ce5f5d (.)
       firstName: a.string(),
       lastName: a.string(),
       inTrip: a.boolean(),
@@ -33,19 +37,32 @@ const schema = a.schema({
 
       parents: a.hasMany('ParentChild', 'childEmail'),
     })
+<<<<<<< HEAD
     .identifier(['childEmail']),
 
     Parent : a
       .model({
         parentEmail: a.id().required(),
+=======
+    .authorization((allow) => [allow.publicApiKey()]),
+
+    Parent : a
+      .model({
+        email:a.id(),
+>>>>>>> parent of 0ce5f5d (.)
         firstName: a.string(),
         lastName: a.string(),
 
         children: a.hasMany('ParentChild', 'parentEmail'),
 
       })
+<<<<<<< HEAD
       .identifier(['parentEmail']),
 }).authorization((allow) => [allow.publicApiKey()]);
+=======
+      .authorization((allow) => [allow.publicApiKey()]),
+});
+>>>>>>> parent of 0ce5f5d (.)
 
 export type Schema = ClientSchema<typeof schema>;
 
